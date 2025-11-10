@@ -1,7 +1,7 @@
 package common
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -58,7 +58,7 @@ func (p *BitgetRestClient) Init(opts ...ClientOption) *BitgetRestClient {
 	return p
 }
 
-func (p *BitgetRestClient) DoPost(uri string, params string) (string, error) {
+func (p *BitgetRestClient) DoPost(uri string, params string) ([]byte, error) {
 	timesStamp := internal.TimesStamp()
 	//body, _ := internal.BuildJsonParams(params)
 
@@ -73,26 +73,25 @@ func (p *BitgetRestClient) DoPost(uri string, params string) (string, error) {
 
 	internal.Headers(request, p.ApiKey, timesStamp, sign, p.Passphrase)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	response, err := p.HttpClient.Do(request)
 
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	defer response.Body.Close()
 
-	bodyStr, err := ioutil.ReadAll(response.Body)
+	res, err := io.ReadAll(response.Body)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	responseBodyString := string(bodyStr)
-	return responseBodyString, err
+	return res, err
 }
 
-func (p *BitgetRestClient) DoGet(uri string, params map[string]string) (string, error) {
+func (p *BitgetRestClient) DoGet(uri string, params map[string]string) ([]byte, error) {
 	timesStamp := internal.TimesStamp()
 	body := internal.BuildGetParams(params)
 	//fmt.Println(body)
@@ -103,23 +102,22 @@ func (p *BitgetRestClient) DoGet(uri string, params map[string]string) (string, 
 
 	request, err := http.NewRequest(constants.GET, requestUrl, nil)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	internal.Headers(request, p.ApiKey, timesStamp, sign, p.Passphrase)
 
 	response, err := p.HttpClient.Do(request)
 
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	defer response.Body.Close()
 
-	bodyStr, err := ioutil.ReadAll(response.Body)
+	res, err := io.ReadAll(response.Body)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	responseBodyString := string(bodyStr)
-	return responseBodyString, err
+	return res, err
 }

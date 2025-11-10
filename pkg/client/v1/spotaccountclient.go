@@ -14,23 +14,23 @@ func (p *SpotAccountClient) Init() *SpotAccountClient {
 	return p
 }
 
-func (p *SpotAccountClient) Info() (string, error) {
+func (p *SpotAccountClient) Info() ([]byte, error) {
 	params := internal.NewParams()
 	resp, err := p.BitgetRestClient.DoGet("/api/spot/v1/account/getInfo", params)
 	return resp, err
 }
 
-func (p *SpotAccountClient) Assets(params map[string]string) (string, error) {
+func (p *SpotAccountClient) Assets(params map[string]string) ([]byte, error) {
 	resp, err := p.BitgetRestClient.DoGet("/api/spot/v1/account/assets-lite", params)
 	return resp, err
 }
 
-func (p *SpotAccountClient) Bills(params map[string]string) (string, error) {
+func (p *SpotAccountClient) Bills(params map[string]string) ([]byte, error) {
 	resp, err := p.BitgetRestClient.DoGet("/api/spot/v1/account/bills", params)
 	return resp, err
 }
 
-func (p *SpotAccountClient) TransferRecords(params map[string]string) (string, error) {
+func (p *SpotAccountClient) TransferRecords(params map[string]string) ([]byte, error) {
 	resp, err := p.BitgetRestClient.DoGet("/api/spot/v1/account/transferRecords", params)
 	return resp, err
 }
