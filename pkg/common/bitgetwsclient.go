@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/config"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/constants"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/logging/applogger"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/config"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/constants"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/logging/applogger"
 	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/model"
 	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
 	"github.com/robfig/cron"
