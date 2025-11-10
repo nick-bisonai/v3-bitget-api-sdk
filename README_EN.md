@@ -3,24 +3,26 @@
 This is a lightweight library that works as a connector to [Bitget API](https://bitgetlimited.github.io/apidoc/en/mix/)
 
 ## Supported API Endpoints:
+
 - pkg/client/v1: `*client.go`
 - pkg/client/v2: `*client.go`
 - pkg/client/ws: `bitgetwsclient.go`
 
-
 ## Installation
+
 ```shell
 git clone git@github.com:BitgetLimited/v3-bitget-api-sdk.git
 ```
 
 ## REST API Demo
+
 ```go
 package test
 
 import (
-  "bitget/internal"
-  "bitget/pkg/client"
-  "bitget/pkg/client/v1"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/internal"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/v1"
   "fmt"
   "testing"
 )
@@ -90,12 +92,13 @@ func Test_get_with_params(t *testing.T) {
 ```
 
 ## Websocket Demo
+
 ```go
 package test
 
 import (
-  "bitget/internal/model"
-  "bitget/pkg/client/ws"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/internal/model"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/ws"
   "fmt"
   "testing"
 )
@@ -133,7 +136,9 @@ func TestBitgetWsClient_New(t *testing.T) {
 ```
 
 ## RSA
+
 If your apikey is of RSA type, actively set the signature type to RSA
+
 ```go
 // config.go
 const (
@@ -143,7 +148,7 @@ const (
 	ApiKey        = ""
 	SecretKey     = "" // If it is RSA type, set the RSA private key
 	PASSPHRASE    = ""
-	TimeoutSecond = 30 
+	TimeoutSecond = 30
 	SignType      = constants.RSA // If your apikey is of RSA type, actively set the signature type to RSA
 )
 ```

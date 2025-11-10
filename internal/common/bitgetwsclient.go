@@ -1,16 +1,17 @@
 package common
 
 import (
-	"bitget/config"
-	"bitget/constants"
-	"bitget/internal"
-	"bitget/internal/model"
-	"bitget/logging/applogger"
 	"fmt"
-	"github.com/gorilla/websocket"
-	"github.com/robfig/cron"
 	"sync"
 	"time"
+
+	"github.com/gorilla/websocket"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/config"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/constants"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/internal"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/internal/model"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/logging/applogger"
+	"github.com/robfig/cron"
 )
 
 type BitgetBaseWsClient struct {

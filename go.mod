@@ -1,4 +1,4 @@
-module bitget
+module github.com/nick-bisonai/v3-bitget-api-sdk
 
 go 1.17
 

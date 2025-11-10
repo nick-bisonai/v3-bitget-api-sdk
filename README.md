@@ -1,14 +1,15 @@
 # Bitget Go
 
-使用此sdk前请阅读api文档 [Bitget API](https://bitgetlimited.github.io/apidoc/en/mix/)
+使用此 sdk 前请阅读 api 文档 [Bitget API](https://bitgetlimited.github.io/apidoc/en/mix/)
 
 ## Supported API Endpoints:
+
 - pkg/client/v1: `*client.go`
 - pkg/client/v2: `*client.go`
 - pkg/client/ws: `bitgetwsclient.go`
 
-
 ## 下载
+
 ```shell
 git clone git@github.com:BitgetLimited/v3-bitget-api-sdk.git
 ```
@@ -19,9 +20,9 @@ git clone git@github.com:BitgetLimited/v3-bitget-api-sdk.git
 package test
 
 import (
-  "bitget/internal"
-  "bitget/pkg/client"
-  "bitget/pkg/client/v1"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/internal"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/v1"
   "fmt"
   "testing"
 )
@@ -91,12 +92,13 @@ func Test_get_with_params(t *testing.T) {
 ```
 
 ## Websocket Demo
+
 ```go
 package test
 
 import (
-  "bitget/internal/model"
-  "bitget/pkg/client/ws"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/internal/model"
+  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/ws"
   "fmt"
   "testing"
 )
@@ -133,7 +135,9 @@ func TestBitgetWsClient_New(t *testing.T) {
 ```
 
 ## RSA
-如果你的apikey是RSA类型则主动设置签名类型为RSA
+
+如果你的 apikey 是 RSA 类型则主动设置签名类型为 RSA
+
 ```go
 // config.go
 const (
@@ -143,8 +147,7 @@ const (
 	ApiKey        = ""
 	SecretKey     = "" // 如果是RSA类型则设置RSA私钥
 	PASSPHRASE    = ""
-	TimeoutSecond = 30 
+	TimeoutSecond = 30
 	SignType      = constants.RSA // 如果你的apikey是RSA类型则主动设置签名类型为RSA
 )
 ```
-

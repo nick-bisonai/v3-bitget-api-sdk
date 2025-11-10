@@ -1,8 +1,8 @@
 package v2
 
 import (
-	"bitget/internal"
-	"bitget/internal/common"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/internal"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/internal/common"
 )
 
 type SpotWalletApi struct {
