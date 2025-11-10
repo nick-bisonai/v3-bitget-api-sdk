@@ -9,8 +9,8 @@ type SpotMarketClient struct {
 	BitgetRestClient *common.BitgetRestClient
 }
 
-func (p *SpotMarketClient) Init() *SpotMarketClient {
-	p.BitgetRestClient = new(common.BitgetRestClient).Init()
+func (p *SpotMarketClient) Init(opts ...common.ClientOption) *SpotMarketClient {
+	p.BitgetRestClient = new(common.BitgetRestClient).Init(opts...)
 	return p
 }
 

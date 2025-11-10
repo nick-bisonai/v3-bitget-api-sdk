@@ -9,6 +9,11 @@ type SpotWalletApi struct {
 	BitgetRestClient *common.BitgetRestClient
 }
 
+func (p *SpotWalletApi) Init(opts ...common.ClientOption) *SpotWalletApi {
+	p.BitgetRestClient = new(common.BitgetRestClient).Init(opts...)
+	return p
+}
+
 func (p *SpotWalletApi) Transfer(params map[string]string) (string, error) {
 	postBody, jsonErr := internal.ToJson(params)
 	if jsonErr != nil {

@@ -9,8 +9,8 @@ type MixAccountClient struct {
 	BitgetRestClient *common.BitgetRestClient
 }
 
-func (p *MixAccountClient) Init() *MixAccountClient {
-	p.BitgetRestClient = new(common.BitgetRestClient).Init()
+func (p *MixAccountClient) Init(opts ...common.ClientOption) *MixAccountClient {
+	p.BitgetRestClient = new(common.BitgetRestClient).Init(opts...)
 	return p
 }
 

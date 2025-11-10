@@ -8,8 +8,8 @@ type MixMarketClient struct {
 	BitgetRestClient *common.BitgetRestClient
 }
 
-func (p *MixMarketClient) Init() *MixMarketClient {
-	p.BitgetRestClient = new(common.BitgetRestClient).Init()
+func (p *MixMarketClient) Init(opts ...common.ClientOption) *MixMarketClient {
+	p.BitgetRestClient = new(common.BitgetRestClient).Init(opts...)
 	return p
 }
 
