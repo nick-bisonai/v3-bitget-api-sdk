@@ -20,12 +20,38 @@ type BitgetRestClient struct {
 	Signer       *Signer
 }
 
-func (p *BitgetRestClient) Init() *BitgetRestClient {
-	p.ApiKey = config.ApiKey
-	p.ApiSecretKey = config.SecretKey
-	p.BaseUrl = config.BaseUrl
-	p.Passphrase = config.PASSPHRASE
-	p.Signer = new(Signer).Init(config.SecretKey)
+type ClientOption func(*BitgetRestClient)
+
+func WithApiKey(apiKey string) ClientOption {
+	return func(c *BitgetRestClient) {
+		c.ApiKey = apiKey
+	}
+}
+
+func WithApiSecretKey(apiSecretKey string) ClientOption {
+	return func(c *BitgetRestClient) {
+		c.ApiSecretKey = apiSecretKey
+	}
+}
+
+func WithPassphrase(passphrase string) ClientOption {
+	return func(c *BitgetRestClient) {
+		c.Passphrase = passphrase
+	}
+}
+
+func WithBaseUrl(baseUrl string) ClientOption {
+	return func(c *BitgetRestClient) {
+		c.BaseUrl = baseUrl
+	}
+}
+
+func (p *BitgetRestClient) Init(opts ...ClientOption) *BitgetRestClient {
+	for _, opt := range opts {
+		opt(p)
+	}
+
+	p.Signer = new(Signer).Init(p.ApiSecretKey)
 	p.HttpClient = http.Client{
 		Timeout: time.Duration(config.TimeoutSecond) * time.Second,
 	}

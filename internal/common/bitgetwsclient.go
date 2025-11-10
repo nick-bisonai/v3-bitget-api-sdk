@@ -15,24 +15,49 @@ import (
 )
 
 type BitgetBaseWsClient struct {
-	NeedLogin        bool
-	Connection       bool
-	LoginStatus      bool
-	Listener         OnReceive
-	ErrorListener    OnReceive
-	Ticker           *time.Ticker
-	SendMutex        *sync.Mutex
-	WebSocketClient  *websocket.Conn
-	LastReceivedTime time.Time
-	AllSuribe        *model.Set
-	Signer           *Signer
-	ScribeMap        map[model.SubscribeReq]OnReceive
+	NeedLogin                     bool
+	Connection                    bool
+	LoginStatus                   bool
+	Listener                      OnReceive
+	ErrorListener                 OnReceive
+	Ticker                        *time.Ticker
+	SendMutex                     *sync.Mutex
+	WebSocketClient               *websocket.Conn
+	LastReceivedTime              time.Time
+	AllSuribe                     *model.Set
+	Signer                        *Signer
+	ScribeMap                     map[model.SubscribeReq]OnReceive
+	ApiKey, Passphrase, SecretKey string
 }
 
-func (p *BitgetBaseWsClient) Init() *BitgetBaseWsClient {
+type WsClientOption func(*BitgetBaseWsClient)
+
+func WithWsApiKey(apiKey string) WsClientOption {
+	return func(c *BitgetBaseWsClient) {
+		c.ApiKey = apiKey
+	}
+}
+
+func WithWsPassphrase(passphrase string) WsClientOption {
+	return func(c *BitgetBaseWsClient) {
+		c.Passphrase = passphrase
+	}
+}
+
+func WithWsSecretKey(secretKey string) WsClientOption {
+	return func(c *BitgetBaseWsClient) {
+		c.SecretKey = secretKey
+	}
+}
+
+func (p *BitgetBaseWsClient) Init(opts ...WsClientOption) *BitgetBaseWsClient {
+	for _, o := range opts {
+		o(p)
+	}
+
 	p.Connection = false
 	p.AllSuribe = model.NewSet()
-	p.Signer = new(Signer).Init(config.SecretKey)
+	p.Signer = new(Signer).Init(p.SecretKey)
 	p.ScribeMap = make(map[model.SubscribeReq]OnReceive)
 	p.SendMutex = &sync.Mutex{}
 	p.Ticker = time.NewTicker(constants.TimerIntervalSecond * time.Second)
@@ -72,8 +97,8 @@ func (p *BitgetBaseWsClient) Login() {
 	}
 
 	loginReq := model.WsLoginReq{
-		ApiKey:     config.ApiKey,
-		Passphrase: config.PASSPHRASE,
+		ApiKey:     p.ApiKey,
+		Passphrase: p.Passphrase,
 		Timestamp:  timesStamp,
 		Sign:       sign,
 	}
