@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal/model"
 	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/ws"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/model"
 )
 
 func TestBitgetWsClient_New(t *testing.T) {

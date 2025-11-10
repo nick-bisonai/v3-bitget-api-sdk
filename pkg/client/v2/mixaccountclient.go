@@ -1,8 +1,8 @@
 package v2
 
 import (
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal/common"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/common"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
 )
 
 type MixAccountClient struct {
@@ -25,7 +25,7 @@ func (p *MixAccountClient) Accounts(params map[string]string) ([]byte, error) {
 }
 
 func (p *MixAccountClient) SetLeverage(params map[string]string) ([]byte, error) {
-	postBody, jsonErr := internal.ToJson(params)
+	postBody, jsonErr := utils.ToJson(params)
 	if jsonErr != nil {
 		return nil, jsonErr
 	}
@@ -34,7 +34,7 @@ func (p *MixAccountClient) SetLeverage(params map[string]string) ([]byte, error)
 }
 
 func (p *MixAccountClient) SetMargin(params map[string]string) ([]byte, error) {
-	postBody, jsonErr := internal.ToJson(params)
+	postBody, jsonErr := utils.ToJson(params)
 	if jsonErr != nil {
 		return nil, jsonErr
 	}
@@ -43,7 +43,7 @@ func (p *MixAccountClient) SetMargin(params map[string]string) ([]byte, error) {
 }
 
 func (p *MixAccountClient) SetMarginMode(params map[string]string) ([]byte, error) {
-	postBody, jsonErr := internal.ToJson(params)
+	postBody, jsonErr := utils.ToJson(params)
 	if jsonErr != nil {
 		return nil, jsonErr
 	}
@@ -53,7 +53,7 @@ func (p *MixAccountClient) SetMarginMode(params map[string]string) ([]byte, erro
 
 // position
 func (p *MixAccountClient) SetPositionMode(params map[string]string) ([]byte, error) {
-	postBody, jsonErr := internal.ToJson(params)
+	postBody, jsonErr := utils.ToJson(params)
 	if jsonErr != nil {
 		return nil, jsonErr
 	}

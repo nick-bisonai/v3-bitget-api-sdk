@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal/common"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/common"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
 )
 
 type SpotWalletApi struct {
@@ -10,7 +10,7 @@ type SpotWalletApi struct {
 }
 
 func (p *SpotWalletApi) Transfer(params map[string]string) ([]byte, error) {
-	postBody, jsonErr := internal.ToJson(params)
+	postBody, jsonErr := utils.ToJson(params)
 	if jsonErr != nil {
 		return nil, jsonErr
 	}
@@ -24,7 +24,7 @@ func (p *SpotWalletApi) DepositAddress(params map[string]string) ([]byte, error)
 }
 
 func (p *SpotWalletApi) Withdrawal(params map[string]string) ([]byte, error) {
-	postBody, jsonErr := internal.ToJson(params)
+	postBody, jsonErr := utils.ToJson(params)
 	if jsonErr != nil {
 		return nil, jsonErr
 	}

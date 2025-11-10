@@ -8,9 +8,9 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/nick-bisonai/v3-bitget-api-sdk/config"
 	"github.com/nick-bisonai/v3-bitget-api-sdk/constants"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/internal/model"
 	"github.com/nick-bisonai/v3-bitget-api-sdk/logging/applogger"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/model"
+	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
 	"github.com/robfig/cron"
 )
 
@@ -90,7 +90,7 @@ func (p *BitgetBaseWsClient) ConnectWebSocket() {
 }
 
 func (p *BitgetBaseWsClient) Login() {
-	timesStamp := internal.TimesStampSec()
+	timesStamp := utils.TimesStampSec()
 	sign := p.Signer.Sign(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
 	if constants.RSA == config.SignType {
 		sign = p.Signer.SignByRSA(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
@@ -126,7 +126,7 @@ func (p *BitgetBaseWsClient) ping() {
 }
 
 func (p *BitgetBaseWsClient) SendByType(req model.WsBaseReq) {
-	json, _ := internal.ToJson(req)
+	json, _ := utils.ToJson(req)
 	p.Send(json)
 }
 
@@ -198,7 +198,7 @@ func (p *BitgetBaseWsClient) ReadLoop() {
 			applogger.Info("Keep connected:" + message)
 			continue
 		}
-		jsonMap := internal.JSONToMap(message)
+		jsonMap := utils.JSONToMap(message)
 
 		v, e := jsonMap["code"]
 
