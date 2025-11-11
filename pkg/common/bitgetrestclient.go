@@ -47,14 +47,13 @@ func WithBaseUrl(baseUrl string) ClientOption {
 }
 
 func (p *BitgetRestClient) Init(opts ...ClientOption) *BitgetRestClient {
+	for _, opt := range opts {
+		opt(p)
+	}
 	p.BaseUrl = config.BaseUrl
 	p.Signer = new(Signer).Init(p.ApiSecretKey)
 	p.HttpClient = http.Client{
 		Timeout: time.Duration(config.TimeoutSecond) * time.Second,
-	}
-
-	for _, opt := range opts {
-		opt(p)
 	}
 
 	return p
