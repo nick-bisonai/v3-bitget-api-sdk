@@ -13,7 +13,7 @@ import (
 )
 
 func TimesStamp() string {
-	timesStamp := time.Now().Unix() * 1000
+	timesStamp := time.Now().UnixMilli()
 	return strconv.FormatInt(timesStamp, 10)
 }
 

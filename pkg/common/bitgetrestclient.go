@@ -1,7 +1,6 @@
 package common
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -57,10 +56,6 @@ func (p *BitgetRestClient) Init(opts ...ClientOption) *BitgetRestClient {
 	for _, opt := range opts {
 		opt(p)
 	}
-
-	fmt.Println(p.ApiKey)
-	fmt.Println(p.ApiSecretKey)
-	fmt.Println(p.Passphrase)
 
 	return p
 }
