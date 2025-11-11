@@ -1,6 +1,7 @@
 package common
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -56,6 +57,11 @@ func (p *BitgetRestClient) Init(opts ...ClientOption) *BitgetRestClient {
 	for _, opt := range opts {
 		opt(p)
 	}
+
+	fmt.Println(p.ApiKey)
+	fmt.Println(p.ApiSecretKey)
+	fmt.Println(p.Passphrase)
+
 	return p
 }
 
@@ -95,7 +101,6 @@ func (p *BitgetRestClient) DoPost(uri string, params string) ([]byte, error) {
 func (p *BitgetRestClient) DoGet(uri string, params map[string]string) ([]byte, error) {
 	timesStamp := utils.TimesStamp()
 	body := utils.BuildGetParams(params)
-	//fmt.Println(body)
 
 	sign := p.Signer.Sign(constants.GET, uri, body, timesStamp)
 
