@@ -47,13 +47,14 @@ func WithBaseUrl(baseUrl string) ClientOption {
 }
 
 func (p *BitgetRestClient) Init(opts ...ClientOption) *BitgetRestClient {
-	for _, opt := range opts {
-		opt(p)
-	}
-
+	p.BaseUrl = config.BaseUrl
 	p.Signer = new(Signer).Init(p.ApiSecretKey)
 	p.HttpClient = http.Client{
 		Timeout: time.Duration(config.TimeoutSecond) * time.Second,
+	}
+
+	for _, opt := range opts {
+		opt(p)
 	}
 	return p
 }
@@ -66,7 +67,7 @@ func (p *BitgetRestClient) DoPost(uri string, params string) ([]byte, error) {
 	if constants.RSA == config.SignType {
 		sign = p.Signer.SignByRSA(constants.POST, uri, params, timesStamp)
 	}
-	requestUrl := config.BaseUrl + uri
+	requestUrl := p.BaseUrl + uri
 
 	buffer := strings.NewReader(params)
 	request, err := http.NewRequest(constants.POST, requestUrl, buffer)
