@@ -1,6 +1,6 @@
 package v1
 
-import "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/common"
+import "github.com/bisonai/v3-bitget-api-sdk/pkg/common"
 
 type MixMarketClient struct {
 	BitgetRestClient *common.BitgetRestClient

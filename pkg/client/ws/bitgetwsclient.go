@@ -3,10 +3,10 @@ package ws
 import (
 	"strings"
 
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/common"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/constants"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/logging/applogger"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/model"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/common"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/constants"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/logging/applogger"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/model"
 )
 
 type BitgetWsClient struct {

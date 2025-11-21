@@ -20,9 +20,9 @@ git clone git@github.com:BitgetLimited/v3-bitget-api-sdk.git
 package test
 
 import (
-  "github.com/nick-bisonai/v3-bitget-api-sdk/internal"
-  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client"
-  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/v1"
+  "github.com/bisonai/v3-bitget-api-sdk/internal"
+  "github.com/bisonai/v3-bitget-api-sdk/pkg/client"
+  "github.com/bisonai/v3-bitget-api-sdk/pkg/client/v1"
   "fmt"
   "testing"
 )
@@ -97,8 +97,8 @@ func Test_get_with_params(t *testing.T) {
 package test
 
 import (
-  "github.com/nick-bisonai/v3-bitget-api-sdk/internal/model"
-  "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/ws"
+  "github.com/bisonai/v3-bitget-api-sdk/internal/model"
+  "github.com/bisonai/v3-bitget-api-sdk/pkg/client/ws"
   "fmt"
   "testing"
 )

@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/common"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/common"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/utils"
 )
 
 type SpotOrderClient struct {

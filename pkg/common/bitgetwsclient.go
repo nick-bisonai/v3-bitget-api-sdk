@@ -5,12 +5,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/config"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/constants"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/logging/applogger"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/model"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/utils"
 	"github.com/gorilla/websocket"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/config"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/constants"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/logging/applogger"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/model"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
 	"github.com/robfig/cron"
 )
 

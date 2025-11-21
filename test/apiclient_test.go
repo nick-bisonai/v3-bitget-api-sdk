@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client"
-	v1 "github.com/nick-bisonai/v3-bitget-api-sdk/pkg/client/v1"
-	"github.com/nick-bisonai/v3-bitget-api-sdk/pkg/utils"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/client"
+	v1 "github.com/bisonai/v3-bitget-api-sdk/pkg/client/v1"
+	"github.com/bisonai/v3-bitget-api-sdk/pkg/utils"
 )
 
 func Test_PlaceOrder(t *testing.T) {
